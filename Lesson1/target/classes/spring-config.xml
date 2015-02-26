@@ -5,17 +5,17 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd"
        xmlns:util="http://www.springframework.org/schema/util">
 
-       <bean id="observer1" class="com.spring.lesson1.ConcreteObserver"></bean>
-       <bean id="observer2" class="com.spring.lesson1.ConcreteObserver"></bean>
-       <bean id="observer3" class="com.spring.lesson1.ConcreteObserver"></bean>
+       <bean id="observer" class="com.spring.lesson1.ConcreteObserver" scope="prototype"></bean>
+       <!-- bean id="observer2" class="com.spring.lesson1.ConcreteObserver"></bean>
+       <bean id="observer3" class="com.spring.lesson1.ConcreteObserver"></bean-->
 
 
        <bean id="concreteSubject" class="com.spring.lesson1.ConcreteSubject">
 
        </bean>
-       <util:list id="observerList" value-type="Observer">
+       <!-- util:list id="observerList" value-type="Observer">
            <ref bean="observer1"></ref>
            <ref bean="observer2"></ref>
            <ref bean="observer3"></ref>
-       </util:list>
+       </util:list-->
 </beans>
