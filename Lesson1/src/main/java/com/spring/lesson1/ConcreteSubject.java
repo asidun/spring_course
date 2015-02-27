@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import com.spring.lesson1.message.Message;
 
-public class ConcreteSubject implements Subject{
+public class ConcreteSubject implements Subject, ApplicationContextAware{
         List<Observer> observers = new LinkedList<Observer>();
 
         public void notifyObserver(Message message){
@@ -20,4 +24,12 @@ public class ConcreteSubject implements Subject{
         public void register(Observer observer){
                 observers.add(observer);
         }
+		@Override
+		public void setApplicationContext(ApplicationContext applicationContext)
+				throws BeansException {
+			for (int i = 0; i <= 3; i++) {
+				register(applicationContext.getBean("observerAddWithDef", ConcreteObserver.class));				
+			}		
+			
+		}
 }

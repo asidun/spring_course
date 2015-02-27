@@ -16,17 +16,16 @@ public class Run {
 		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
 		
 		GenericBeanDefinition beanDef = new GenericBeanDefinition();
-		beanDef.setInitMethodName("printClassId");
-		beanDef.setBeanClass(MyBeanClass.class);
+		//beanDef.setInitMethodName("printClassId");
+		beanDef.setBeanClass(ConcreteObserver.class);
 		beanDef.setLazyInit(false);
 		beanDef.setAbstract(false);
 		beanDef.setAutowireCandidate(true);
 		beanDef.setScope("prototype");
-		beanFactory.registerBeanDefinition("myBeanAddWithDef", beanDef);
-		
-//		MyBeanClass myBeanAddWithDef1 = context.getBean("myBeanAddWithDef", MyBeanClass.class);
-//		myBeanAddWithDef1.printClassId();
-				
-		Observer observer1 = (Observer) context.getBean("observer");;
+		beanFactory.registerBeanDefinition("observerAddWithDef", beanDef);
+					
+		Subject subject = (Subject) context.getBean("concreteSubject");
+		Message message = new Message("Message", "Aware bean");
+		subject.notifyObserver(message );
 	}
 }
