@@ -4,6 +4,8 @@ import com.spring.lesson1.message.Message;
 
 public interface Observer {
 
-	public abstract void notify(Message message);
+	void notify(Message message);
+
+	Integer getId();
 
 }
