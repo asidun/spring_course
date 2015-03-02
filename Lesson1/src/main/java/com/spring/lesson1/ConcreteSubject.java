@@ -10,8 +10,8 @@ import org.springframework.context.ApplicationContextAware;
 
 import com.spring.lesson1.message.Message;
 
-public class ConcreteSubject implements Subject, ApplicationContextAware{
-        List<Observer> observers = new LinkedList<Observer>();
+public class ConcreteSubject implements Subject{
+        private final List<Observer> observers = new LinkedList<Observer>();
 
         public void notifyObserver(Message message){
                 for (Observer observer : observers) {
@@ -23,13 +23,11 @@ public class ConcreteSubject implements Subject, ApplicationContextAware{
         };
         public void register(Observer observer){
                 observers.add(observer);
-        }
-		@Override
-		public void setApplicationContext(ApplicationContext applicationContext)
-				throws BeansException {
-			for (int i = 0; i <= 3; i++) {
-				register(applicationContext.getBean("observerAddWithDef", ConcreteObserver.class));				
-			}		
+        }	
 			
-		}
+        public ConcreteSubject(List<Observer> observers){
+        	for (Observer obs : observers) {
+				register(obs);
+			}
+        }
 }

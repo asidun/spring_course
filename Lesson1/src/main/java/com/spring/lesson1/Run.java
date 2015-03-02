@@ -13,19 +13,19 @@ public class Run {
 				"spring-config.xml");
 		
 		context.registerShutdownHook(); 
-		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
-		
-		GenericBeanDefinition beanDef = new GenericBeanDefinition();
-		//beanDef.setInitMethodName("printClassId");
-		beanDef.setBeanClass(ConcreteObserver.class);
-		beanDef.setLazyInit(false);
-		beanDef.setAbstract(false);
-		beanDef.setAutowireCandidate(true);
-		beanDef.setScope("prototype");
-		beanFactory.registerBeanDefinition("observerAddWithDef", beanDef);
+//		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
+//		
+//		GenericBeanDefinition beanDef = new GenericBeanDefinition();
+//		//beanDef.setInitMethodName("printClassId");
+//		beanDef.setBeanClass(ConcreteObserver.class);
+//		beanDef.setLazyInit(false);
+//		beanDef.setAbstract(false);
+//		beanDef.setAutowireCandidate(true);
+//		beanDef.setScope("prototype");
+//		beanFactory.registerBeanDefinition("observerAddWithDef", beanDef);
 					
 		Subject subject = (Subject) context.getBean("concreteSubject");
 		Message message = new Message("Message", "Aware bean");
-		subject.notifyObserver(message );
+		subject.notifyObserver(message);
 	}
 }
