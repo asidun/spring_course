@@ -28,4 +28,8 @@
            <ref bean="observer2"></ref>
            <ref bean="observer3"></ref>
        </util:list>
+       
+       <bean id="personEventListener1" class="com.spring.lesson1.messaging.PersonEventListener"></bean>
+       <bean id="personEventListener2" class="com.spring.lesson1.messaging.PersonEventListener"></bean>
+       
 </beans>

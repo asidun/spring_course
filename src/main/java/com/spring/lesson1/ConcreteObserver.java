@@ -1,6 +1,6 @@
 package com.spring.lesson1;
 
-import com.spring.lesson1.message.Message;
+import com.spring.lesson1.messaging.Person;
 
 public class ConcreteObserver implements Observer{
 
@@ -15,9 +15,9 @@ public class ConcreteObserver implements Observer{
 		return id;
 	}
 
-	public void notify(Message message) {
-		System.out.println("Observer id = " + id + ". "
-				+ message.getDescription() + ": " + message.getContent());
+	public void notify(Person person) {
+		System.out.println("Observer id = " + id + ". Person name = "
+				+ person.getFirstName());
 	}
 
 }

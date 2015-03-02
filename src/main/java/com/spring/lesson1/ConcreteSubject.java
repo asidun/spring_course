@@ -7,17 +7,27 @@ import javax.annotation.Resource;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 
 import com.spring.lesson1.message.Message;
+import com.spring.lesson1.messaging.Person;
+import com.spring.lesson1.messaging.PersonEvent;
 
-public class ConcreteSubject implements Subject{
+public class ConcreteSubject implements Subject, ApplicationEventPublisherAware{
         private final List<Observer> observers = new LinkedList<Observer>();
+        private ApplicationEventPublisher applicationEventPublisher;
 
-        public void notifyObserver(Message message){
+        public void notifyObserver(Person person){
                 for (Observer observer : observers) {
-                        observer.notify(message);
+                        observer.notify(person);
                 }
         }
+        
+        public void notifyObserverByEvent(Person person){
+        	applicationEventPublisher.publishEvent(new PersonEvent(person));
+        }
+        
         public void unregister(Observer observer){
                 observers.remove(observer);
         };
@@ -30,4 +40,10 @@ public class ConcreteSubject implements Subject{
 				register(obs);
 			}
         }
+		@Override
+		public void setApplicationEventPublisher(
+				ApplicationEventPublisher applicationEventPublisher) {
+			this.applicationEventPublisher = applicationEventPublisher;
+			
+		}
 }
