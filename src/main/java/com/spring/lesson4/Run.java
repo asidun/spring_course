@@ -9,8 +9,8 @@ public class Run {
 		
 		context.registerShutdownHook(); 
 					
-		Bean bean = (Bean) context.getBean("myBean");		
-		bean.aboutBean();
+		Bean bean = (Bean) context.getBean("myBean");	
+		bean.aboutBean(); 
 		
 	}
 }
