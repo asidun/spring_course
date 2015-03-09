@@ -40,6 +40,7 @@ public class ConcreteSubject implements Subject, ApplicationEventPublisherAware{
 				register(obs);
 			}
         }
+		@Override
 		public void setApplicationEventPublisher(
 				ApplicationEventPublisher applicationEventPublisher) {
 			this.applicationEventPublisher = applicationEventPublisher;

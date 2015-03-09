@@ -12,6 +12,7 @@ public class PersonEventListener implements ApplicationListener<PersonEvent>, Be
 
 	}
 
+	@Override
 	public void onApplicationEvent(PersonEvent event) {
 		System.out.println("Event with person " + event.getSource() + " for listener " + name);
 		
